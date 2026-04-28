@@ -8,10 +8,10 @@ import type { RouteObject } from "react-router";
 // AppRouter 컴포넌트x , 함수 O
 // 매개변수 자리에 onClick이 들어오는데, 얘는 매개변수니까
 // 타입스크립트에 의거하여 타입을 명시해줘야 함
-export const AppRouter = (onClick: VoidFunction) => {
+export const AppRouter = () => {
     const routes: RouteObject[] = [
         {
-            element: <MainLayout onClick={onClick}/>,
+            element: <MainLayout/>,
             path: "/",
             children: [
                 { index: true, element: <Home /> },
