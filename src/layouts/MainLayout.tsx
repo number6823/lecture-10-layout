@@ -1,5 +1,5 @@
 import Header from "../components/Header.tsx";
-import { Outlet } from "react-router/internal/react-server-client";
+import { Outlet } from "react-router";
 import styled from "styled-components";
 import Footer from "../components/Footer.tsx";
 
@@ -7,17 +7,23 @@ const Wrap = styled.div`
     display: flex;
     flex-direction: column;
     min-height: 100dvh;
+    background-color: ${props => props.theme.color.background};
+    color: ${props => props.theme.color.text};
 `;
 
 const Main = styled.main`
-flex: 1;`
+    flex: 1;
+`;
 
-function MainLayout() {
+
+// MainLayout은 컴포넌트 O
+// 얘는 프롭스로 전달받음
+function MainLayout({onClick} : {onClick: VoidFunction}) {
     return (
         <Wrap>
-            <Header />
+            <Header onClick={onClick} />
             <Main>
-               <Outlet />
+                <Outlet />
             </Main>
             <Footer />
         </Wrap>

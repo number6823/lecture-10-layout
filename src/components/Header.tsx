@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { Link } from "react-router/internal/react-server-client";
+import { Link } from "react-router";
 
 const Head = styled.header`
     height: 64px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #ccc;
+    background-color: ${props => props.theme.color.muted};
 `;
 
 const NavLeft = styled.div`
@@ -14,7 +14,8 @@ const NavLeft = styled.div`
     gap: 20px;
     align-items: center;
 `;
-const LOGO = styled.div`
+
+const Logo = styled.div`
     font-size: 20px;
     font-weight: 700;
 `;
@@ -30,11 +31,11 @@ const NavRight = styled.div`
     align-items: center;
 `;
 
-function Header() {
+function Header({ onClick }: { onClick: VoidFunction }) {
     return (
         <Head>
             <NavLeft>
-                <LOGO>MyApp</LOGO>
+                <Logo>MyApp</Logo>
                 <Nav>
                     <Link to={"/"}>Home</Link>
                     <Link to={"/about"}>About</Link>
@@ -42,10 +43,10 @@ function Header() {
             </NavLeft>
             <NavRight>
                 <Link to={"/auth/login"}>로그인</Link>
+                <button onClick={onClick}>테마토글</button>
             </NavRight>
         </Head>
     );
-
 }
 
 export default Header;
